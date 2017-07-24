@@ -1,14 +1,14 @@
-var asiento = -1;
+var numeroAsiento = -1;
 var asientos = document.getElementsByTagName("td");
 
 for (var i = 0; i < asientos.length; i++) {
   asientos[i].addEventListener("click", redirect, false);
 }
 function redirect(event) {
-  asiento = event.target.textContent;
+  numeroAsiento = event.target.textContent;
 
   var mostrar = document.getElementById("mostrar");
-  mostrar.innerHTML = asiento;
+  mostrar.innerHTML = numeroAsiento;
   event.target.style.backgroundColor =
     event.target.style.backgroundColor == "rgb(248, 237, 80)"
       ? "transparent"
@@ -38,7 +38,7 @@ function reservar() {
   var apellido = document.getElementById("apellido").value;
   var dni = document.getElementById("dni").value;
 
-  pasajero[asiento - 1] = {
+  pasajero[numeroAsiento - 1] = {
     nombre: nombre,
     apellido: apellido,
     dni: dni
