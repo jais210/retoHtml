@@ -1,15 +1,18 @@
 var numeroAsiento = -1;
 var asientos = document.getElementsByTagName("td");
 
+var pasajeros = new Array(32);
+for (var i = 0; i < 32; i++) {
+  pasajeros[i] = undefined;
+}
+
+
 for (var i = 0; i < asientos.length; i++) {
   asientos[i].addEventListener("click", redirect, false);
 }
 
 function redirect(event) {
   numeroAsiento = event.target.textContent;
-
-  var mostrar = document.getElementById("mostrar");
-  mostrar.innerHTML = numeroAsiento;
   event.target.style.backgroundColor =
     event.target.style.backgroundColor == "rgb(248, 237, 80)" ?
     "transparent" :
@@ -25,11 +28,6 @@ function buscar() {
       document.getElementById("dni").value = pasajeros[i].dni;
     }
   }
-}
-
-var pasajeros = new Array(32);
-for (var i = 0; i < 32; i++) {
-  pasajeros[i] = undefined;
 }
 
 function reservar() {
@@ -54,20 +52,15 @@ function limpiar() {
 }
 
 function mostrarLista() {
-  var lista = "";
+  var lista = [];
 
   for (var i = 0; i < 32; i++) {
 
     if (pasajeros[i] != undefined) {
-      document.getElementById("nombre").value = pasajeros[i].nombre;
-      document.getElementById("apellido").value = pasajeros[i].apellido;
-      document.getElementById("dni").value = pasajeros[i].dni;
+      var mostrarLista = document.getElementById("mostrarLista");
+      lista += " El pasajero es " + pasajeros[i].nombre + " " + pasajeros[i].apellido + ", " + "su número de DNI es " + pasajeros[i].dni;
+
+      mostrarLista.innerHTML = lista;
     }
-
-    
-
   }
-
-  return lista;
-
 }
